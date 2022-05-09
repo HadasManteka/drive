@@ -16,23 +16,23 @@ public class UploadFileService {
     @Autowired
     private FileRepository _fileRepository;
 
-    public void uploadFiles(MultipartFile[] uploadFiles) throws IOException {
+    public void uploadFiles(MultipartFile[] uploadFiles, String user) throws IOException {
         String uploadFolder = FileSystems.getDefault().getPath("Upload").toAbsolutePath().toString();
         new File(uploadFolder).mkdir();
 
        for (MultipartFile file : uploadFiles) {
-           uploadSingleFile(uploadFolder, file);
+           uploadSingleFile(uploadFolder, file, user);
        }
     }
 
-    public void uploadSingleFile(String uploadFolder, MultipartFile uploadFile) throws IOException {
+    public void uploadSingleFile(String uploadFolder, MultipartFile uploadFile, String user) throws IOException {
 
         String originName = uploadFile.getOriginalFilename();
         String destName = findDestNameForSaving(originName);
 
         // Download the file and save it's details to the db
         saveFileToServer(uploadFile, uploadFolder + File.separator + destName);
-        saveFileToDb(new UploadFile(new Date().getTime(), "Upload" + File.separator + destName, originName));
+        saveFileToDb(new UploadFile(new Date().getTime(), "Upload" + File.separator + destName, originName, user));
     }
 
     /**

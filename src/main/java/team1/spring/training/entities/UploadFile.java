@@ -33,12 +33,20 @@ public class UploadFile {
     @Column(name = "file_name")
     private String fileName;
 
+    @JsonProperty("user")
+    @Column(name = "user")
+    private String user;
+
     public long getId() {
         return id;
     }
 
     public String getLocation() {
         return location;
+    }
+
+    public String getUser() {
+        return user;
     }
 
     public UploadFile(long timestamp, String location, String fileName) {
@@ -52,6 +60,13 @@ public class UploadFile {
         this.timestamp = timestamp;
         this.location = location;
         this.fileName = fileName;
+    }
+
+    public UploadFile(long timestamp, String location, String fileName, String user) {
+        this.fileName = fileName;
+        this.timestamp = timestamp;
+        this.location = location;
+        this.user = user;
     }
 
     public UploadFile() {
