@@ -6,7 +6,7 @@ public class GenerateHashCode {
 
     BCryptPasswordEncoder _bcrypt = new BCryptPasswordEncoder();
 
-    public String generateSHAHash(String data) throws NoSuchAlgorithmException {
+    public String generateSHAHash(String data) {
         return _bcrypt.encode(data);
     }
 

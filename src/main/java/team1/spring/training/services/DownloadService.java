@@ -14,13 +14,7 @@ import java.nio.file.Paths;
 @Service
 public class DownloadService {
 
-//    @Autowired
-//    private FileRepository _fileRepository;
-
-
     public FileSystemResource getFile(UploadFile fileToDownload) throws FileNotFoundException {
-//        UploadFile file = _fileRepository.findByFileNameAndUser(fileToDownload.getFileName(), fileToDownload.getUser());
-//        if (Files.exists(Paths.get(file.getLocation()))) {
         if (Files.exists(Paths.get(fileToDownload.getLocation()))) {
             return new FileSystemResource(new File(fileToDownload.getLocation()));
         } else {

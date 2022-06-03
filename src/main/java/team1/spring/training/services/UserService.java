@@ -7,13 +7,9 @@ import team1.spring.training.exceptions.NameAlreadyExists;
 import team1.spring.training.repositories.UserRepository;
 import team1.spring.training.util.GenerateHashCode;
 
-import javax.management.openmbean.KeyAlreadyExistsException;
 import javax.security.auth.login.FailedLoginException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 @Service
@@ -34,7 +30,7 @@ public class UserService {
 
     }
 
-    public void login(User user, HttpServletRequest request, HttpServletResponse response) throws FailedLoginException {
+    public void login(User user, HttpServletRequest request) throws FailedLoginException {
         User foundUser = _userRepository.findByName(user.getName());
 
         if (foundUser != null &&
@@ -53,7 +49,6 @@ public class UserService {
     }
 
     public void logout(HttpServletRequest request) {
-
         request.getSession().invalidate();
     }
 }

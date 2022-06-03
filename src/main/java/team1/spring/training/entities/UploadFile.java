@@ -7,14 +7,6 @@ import javax.persistence.*;
 @Table(name = "upload_file")
 public class UploadFile {
 
-    public long getTimestamp() {
-        return timestamp;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
     @Id
     @GeneratedValue
     @JsonProperty("id")
@@ -39,6 +31,14 @@ public class UploadFile {
 
     public long getId() {
         return id;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 
     public String getLocation() {

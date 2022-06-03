@@ -9,8 +9,7 @@ public class FilterConfiguration {
 
     @Bean
     public FilterRegistrationBean loggingFilter(){
-        FilterRegistrationBean registrationBean
-                = new FilterRegistrationBean();
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 
         registrationBean.setFilter(new LoginFilter());
         registrationBean.addUrlPatterns("/api/*");

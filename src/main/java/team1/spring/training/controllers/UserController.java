@@ -48,7 +48,7 @@ public class UserController {
     @RequestMapping("/login")
     public ResponseEntity<ResponseModal> login(@RequestBody User user){
         try {
-            _userService.login(user, _request, _response);
+            _userService.login(user, _request);
             return new ResponseEntity<>(OK);
         } catch (FailedLoginException e) {
             return new ResponseEntity<>(new ResponseModal(MessageRepository.INCORRECT_IDENTIFICATION_DETAILS),
